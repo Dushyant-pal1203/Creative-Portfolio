@@ -5,7 +5,7 @@ import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import type { InsertContact } from "@shared/schema";
+import type { InsertContact } from "@/types/contact";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState<InsertContact>({
@@ -16,7 +16,7 @@ export default function ContactForm() {
 
   const submitContactMutation = useMutation({
     mutationFn: async (data: InsertContact) => {
-      const response = await fetch("/api/contacts", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

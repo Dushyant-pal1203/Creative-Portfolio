@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import profileImg from "/images/Aditya.jpeg";
+import profileImg from "/images/Aditya.webp";
 import { MapPin, Calendar, Heart, Coffee, Code2, Zap } from "lucide-react";
 
 const skills = [

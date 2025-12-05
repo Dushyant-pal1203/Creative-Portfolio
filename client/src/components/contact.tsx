@@ -7,7 +7,7 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 import ContactForm from "./contact-form";
-import heroBg from "/images/background.jpg";
+import heroBg from "/images/background.webp";
 
 const socials = [
   { name: "TWITTER", url: "#" },
@@ -101,11 +101,11 @@ export default function Contact() {
               className="space-y-8"
             >
               <motion.a
-                href="mailto:hello@example.com"
-                className="block text-2xl md:text-3xl font-bold text-white hover:text-primary transition-colors relative group w-fit"
+                href="mailto:aditya.pal32742@gmail.com"
+                className="block text-xl md:text-2xl font-bold text-white hover:text-primary transition-colors relative group w-fit"
                 whileHover={{ x: 10 }}
               >
-                hello@example.com
+                aditya.pal32742@gmail.com
                 <motion.span
                   className="absolute -bottom-1 left-0 h-0.5 bg-primary"
                   initial={{ width: 0 }}

@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import Logo from "/icons/logo.png";
+import Logo from "/icons/logo.webp";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +35,7 @@ export default function Navbar() {
         >
           <span className="flex items-center gap-2">
             <span>
-              <img src={Logo} alt="Profile" className="w-15 h-10" />
+              <img src={Logo} alt="Profile" className="w-12 h-10" />
             </span>{" "}
             DUSHYANT PAL<span className="text-primary">.</span>
           </span>

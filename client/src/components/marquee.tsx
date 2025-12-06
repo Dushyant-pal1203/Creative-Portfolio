@@ -8,7 +8,7 @@ interface MarqueeProps {
 
 export default function Marquee({
   items,
-  speed = 20, // default slower
+  speed = 10, // default slower
   className = "",
 }: MarqueeProps) {
   // repeat items for seamless loop

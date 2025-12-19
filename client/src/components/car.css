@@ -664,19 +664,47 @@
 }
 
 /* Landscape orientation fixes */
-@media screen and (max-height: 500px) and (orientation: landscape) {
+@media screen and (max-width: 650px) and (orientation: portrait) {
     .container-car {
-        height: 800px;
+        height: 350px;
+    }
+
+    .moon {
+        width: 30px;
+        height: 30px;
+        right: 20px;
+        top: 20px;
     }
 
     .road {
         height: 60px;
     }
 
+
     .car-wrapper {
         width: 120px;
-        bottom: 8px;
+        bottom: 15px;
     }
+
+    .car-image-moving {
+        width: 100%;
+    }
+
+    .wheel {
+        width: 20px;
+        height: 20px;
+    }
+
+    .front-wheel {
+        left: 10px;
+        bottom: 5px;
+    }
+
+    .rear-wheel {
+        right: 16px;
+        bottom: 5px;
+    }
+
 
     .brand-name {
         font-size: 2rem;

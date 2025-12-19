@@ -1,0 +1,357 @@
+.container-car {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+    scrollbar-width: none !important;
+}
+
+/* Background elements */
+.moon {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #f5f5b8, #d4d45a);
+    border-radius: 50%;
+    box-shadow: 0 0 40px 10px rgba(245, 245, 184, 0.4);
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Road styling */
+.road {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background: #333;
+    z-index: 1;
+}
+
+.road-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: repeating-linear-gradient(to right,
+            yellow 0%,
+            yellow 10%,
+            transparent 10%,
+            transparent 20%);
+    /* animation: roadMove 0.8s linear infinite; */
+}
+
+
+/* ====== CAR ====== */
+.car-wrapper {
+    position: absolute;
+    /* Changed from fixed to absolute */
+    bottom: 4px;
+    left: -250px;
+    /* Start just outside left edge */
+    width: 250px;
+    z-index: 1000;
+    animation: carMove 10s ease-in-out infinite;
+}
+
+.car-image-moving {
+    width: 80%;
+    height: auto;
+    transform: scaleX(-1);
+    display: block;
+}
+
+@keyframes carMove {
+    0% {
+        left: -40%;
+    }
+
+    50% {
+        left: 50%;
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    100% {
+        left: 120%;
+    }
+}
+
+/* ====== WHEEL ====== */
+.wheel {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: url('../../public/images/rim.webp') no-repeat center/cover;
+    animation: spinWheel 0.8s linear infinite;
+    z-index: 2;
+}
+
+.front-wheel {
+    left: 18px;
+    bottom: 12px;
+}
+
+.rear-wheel {
+    right: 78px;
+    bottom: 10px;
+}
+
+@keyframes spinWheel {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ====== LIGHTS ====== */
+.headlamp {
+    position: absolute;
+    width: 15px;
+    height: 5px;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%) rotate(22deg);
+    background: #fff;
+    opacity: 0.8;
+    border-radius: 100%;
+    box-shadow: -18px 0 20px 14px #fff;
+    animation: headlampPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes headlampPulse {
+    0% {
+        opacity: 0.5;
+        box-shadow: 0 0 8px 4px #fff;
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 20px 10px #fff;
+    }
+}
+
+.tail-light {
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    top: 50%;
+    left: 1px;
+    transform: translateY(-50%);
+    background: red;
+    opacity: 0.5;
+    border-radius: 50%;
+    animation: tailBlink 1s ease-in-out infinite;
+    box-shadow: 18px 0 12px 6px red;
+}
+
+@keyframes tailBlink {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        box-shadow: 0 0 8px 4px red;
+    }
+
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 16px 8px red;
+    }
+}
+
+/* ====== SMOKE ====== */
+.smoke-trail {
+    position: absolute;
+    width: 50px;
+    /* bigger puff */
+    height: 40px;
+    bottom: 16px;
+    right: 235px;
+    border-radius: 50%;
+    background: radial-gradient(rgba(139, 138, 138, 0.9), rgba(100, 100, 100, 0));
+    filter: blur(10px);
+    /* softer, bulkier look */
+    animation: smokeMove 4s linear infinite;
+    animation-delay: calc(var(--i) * 0.4s);
+    /* more overlap */
+    opacity: 0.95;
+    z-index: 0;
+}
+
+@keyframes smokeMove {
+    0% {
+        transform: translateX(0) translateY(0) scale(0.8);
+        opacity: 0.95;
+    }
+
+    40% {
+        transform: translateX(-70px) translateY(-30px) scale(1.4);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateX(-150px) translateY(-70px) scale(2.2);
+        opacity: 0;
+    }
+}
+
+
+/* ====== BRAND NAME ====== */
+.brand-name {
+    position: relative;
+    /* Changed from fixed to absolute */
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Racing Sans One', cursive;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    gap: 5px;
+    pointer-events: none;
+    z-index: 2;
+    width: 100%;
+    /* Ensure it stays within container */
+    text-align: center;
+    justify-content: center;
+}
+
+.brand-name span {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: letterAppear 10s linear infinite;
+}
+
+.brand-name span:nth-child(1) {
+    animation-delay: 3.8s;
+}
+
+.brand-name span:nth-child(2) {
+    animation-delay: 4s;
+}
+
+.brand-name span:nth-child(3) {
+    animation-delay: 4.2s;
+}
+
+.brand-name span:nth-child(4) {
+    animation-delay: 4.4s;
+}
+
+.brand-name span:nth-child(5) {
+    animation-delay: 4.6s;
+}
+
+.brand-name span:nth-child(6) {
+    animation-delay: 4.8s;
+}
+
+.brand-name span:nth-child(7) {
+    animation-delay: 5s;
+}
+
+.brand-name span:nth-child(8) {
+    animation-delay: 5.2s;
+}
+
+.brand-name span:nth-child(9) {
+    animation-delay: 5.4s;
+}
+
+.brand-name span:nth-child(10) {
+    animation-delay: 5.6s;
+}
+
+.brand-name span:nth-child(11) {
+    animation-delay: 5.8s;
+}
+
+.brand-name span:nth-child(12) {
+    animation-delay: 6s;
+}
+
+
+@keyframes letterAppear {
+
+    0%,
+    20% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    25%,
+    45% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Main Body */
+.main-body {
+    color: white;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 60px 20px;
+    /* background: linear-gradient(to right, #f8f9fa, #ffffff); */
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: whitesmoke;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.hero-content h3 {
+    font-size: 1.5rem;
+    color: #F89B1C;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #05B0EF;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.logo {
+    width: 100% !important;
+    height: 40px;
+}

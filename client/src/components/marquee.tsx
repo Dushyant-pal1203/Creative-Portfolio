@@ -1,33 +1,53 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
 
 interface MarqueeProps {
   items: string[];
-  speed?: number; // higher = slower
+  speed?: number; // higher = faster
   className?: string;
 }
 
 export default function Marquee({
   items,
-  speed = 10, // default slower
+  speed = 20,
   className = "",
 }: MarqueeProps) {
-  // repeat items for seamless loop
+  const controls = useAnimation();
+
   const repeatedItems = [...items, ...items];
 
+  // higher speed => shorter duration
+  const duration = 100 / speed;
+
+  useEffect(() => {
+    controls.start({
+      x: ["0%", "-50%"],
+      transition: {
+        repeat: Infinity,
+        repeatType: "loop",
+        duration,
+        ease: "linear",
+      },
+    });
+  }, [controls, duration]);
+
   return (
-    <div className={`overflow-hidden whitespace-nowrap ${className}`}>
-      <motion.div
-        className="inline-flex"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{
-          x: {
+    <div
+      className={`overflow-hidden whitespace-nowrap ${className}`}
+      onMouseEnter={() => controls.stop()}
+      onMouseLeave={() =>
+        controls.start({
+          x: ["0%", "-50%"],
+          transition: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: speed, // higher = slower
+            duration,
             ease: "linear",
           },
-        }}
-      >
+        })
+      }
+    >
+      <motion.div className="inline-flex" animate={controls}>
         {repeatedItems.map((item, index) => (
           <span
             key={index}

@@ -8,6 +8,7 @@ import {
 import { useRef } from "react";
 import ContactForm from "./contact-form";
 import heroBg from "/images/background.webp";
+import CarHero from "@/components/CarHero";
 
 const socials = [
   { name: "TWITTER", url: "#" },
@@ -142,6 +143,8 @@ export default function Contact() {
             <ContactForm />
           </motion.div>
         </motion.div>
+
+        <CarHero />
 
         {/* Footer Bottom */}
         <motion.div

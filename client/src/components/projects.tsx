@@ -231,7 +231,15 @@ export default function Projects() {
           >
             Projects that
             <br />
-            <span className="text-muted-foreground">define my craft</span>
+            <span className="text-muted-foreground">
+              <motion.span
+                className="text-primary inline-block"
+                whileHover={{ scale: 1.1, rotate: -2 }}
+              >
+                define
+              </motion.span>{" "}
+              my craft
+            </span>
           </motion.h3>
 
           <motion.p

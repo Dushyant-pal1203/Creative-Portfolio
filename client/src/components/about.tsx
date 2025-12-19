@@ -141,9 +141,10 @@ export default function About() {
             <motion.div
               className="absolute -right-4 lg:-right-16 top-1/4 bg-primary text-black px-4 py-2 font-mono text-xs uppercase tracking-widest z-20"
               initial={{ x: 50, opacity: 0 }}
+              whileHover={{ scale: 1.1, rotate: 4 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.7 }}
+              // transition={{ delay: 0.7 }}
             >
               Available for Work
             </motion.div>
@@ -151,9 +152,10 @@ export default function About() {
             <motion.div
               className="absolute -left-4 lg:-left-5 bottom-2/4 sm:bottom-1/4 bg-card border border-border px-4 py-2 z-20"
               initial={{ x: -50, opacity: 0 }}
+              whileHover={{ scale: 1.1, rotate: -4 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.9 }}
+              // transition={{ delay: 0.9 }}
             >
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
                 <MapPin className="w-3 h-3 text-primary" />

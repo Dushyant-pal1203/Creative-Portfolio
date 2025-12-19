@@ -89,7 +89,21 @@ export default function Experience() {
         >
           My journey in
           <br />
-          <span className="text-muted-foreground">design & development</span>
+          <span className="text-muted-foreground">
+            <motion.span
+              className="text-primary inline-block"
+              whileHover={{ scale: 1.1, rotate: -2 }}
+            >
+              design
+            </motion.span>{" "}
+            &
+            <motion.span
+              className="text-primary inline-block"
+              whileHover={{ scale: 1.1, rotate: 2 }}
+            >
+              development
+            </motion.span>
+          </span>
         </motion.h3>
 
         <div className="grid lg:grid-cols-3 gap-16">
@@ -207,8 +221,11 @@ export default function Experience() {
                 and skills.
               </p>
               <motion.a
-                href="#"
-                whileHover={{ x: 5 }}
+                href="/doc/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 text-primary text-sm font-bold"
               >
                 Download Resume

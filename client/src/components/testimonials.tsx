@@ -70,7 +70,13 @@ export default function Testimonials() {
           >
             Words from
             <br />
-            <span className="text-primary">happy</span> clients
+            <motion.span
+              className="text-primary inline-block"
+              whileHover={{ scale: 1.1, rotate: -2 }}
+            >
+              happy
+            </motion.span>{" "}
+            clients
           </motion.h3>
 
           <motion.div

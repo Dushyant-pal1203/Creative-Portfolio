@@ -109,7 +109,13 @@ export default function Services() {
           >
             Services that drive
             <br />
-            <span className="text-primary">results</span> and create
+            <motion.span
+              className="text-primary inline-block"
+              whileHover={{ scale: 1.1, rotate: -2 }}
+            >
+              results
+            </motion.span>{" "}
+            and create
             <br />
             <span className="text-muted-foreground">impact</span>
           </motion.h3>

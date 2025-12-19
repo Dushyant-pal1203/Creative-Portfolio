@@ -359,6 +359,78 @@
 /* ====== RESPONSIVE STYLES ====== */
 
 /* Tablet devices (768px and below) */
+@media screen and (max-width: 1020px) {
+    .container-car {
+        height: 520px;
+    }
+
+    .moon {
+        width: 60px;
+        height: 60px;
+        right: 50px;
+        top: 40px;
+    }
+
+    .road {
+        height: 100px;
+    }
+
+    .car-wrapper {
+        width: 200px;
+        bottom: 8px;
+    }
+
+    .car-image-moving {
+        width: 75%;
+    }
+
+    .wheel {
+        width: 24px;
+        height: 24px;
+    }
+
+    .front-wheel {
+        left: 14px;
+        bottom: 10px;
+    }
+
+    .rear-wheel {
+        right: 70px;
+        bottom: 8px;
+    }
+
+    .brand-name {
+        font-size: 3rem;
+        bottom: -10px;
+    }
+
+    .hero-content {
+        padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+        padding: 0 20px;
+    }
+
+    .hero-content h3 {
+        font-size: 1.3rem;
+        padding: 0 20px;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    .smoke-trail {
+        right: 188px;
+        bottom: 14px;
+        width: 40px;
+        height: 32px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .container-car {
         height: 500px;

@@ -72,7 +72,7 @@ const CarHero: React.FC = () => {
         </div>
 
         <div className="brand-name">
-          {"Web Designer".split("").map((char, index) => (
+          {"Web Developer".split("").map((char, index) => (
             <span key={index}>{char}</span>
           ))}
         </div>

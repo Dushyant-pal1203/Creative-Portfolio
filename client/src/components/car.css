@@ -296,6 +296,10 @@
     animation-delay: 6s;
 }
 
+.brand-name span:nth-child(13) {
+    animation-delay: 6.2s;
+}
+
 
 @keyframes letterAppear {
 

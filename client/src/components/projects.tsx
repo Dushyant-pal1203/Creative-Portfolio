@@ -202,7 +202,7 @@ function ProjectCard({
 
 export default function Projects() {
   return (
-    <section id="work" className="py-32 bg-background relative">
+    <section id="work" className="py-32 bg-background relative overflow-hidden">
       {/* Decorative Corner */}
       <div className="absolute top-0 left-0 w-64 h-64 border-l-2 border-t-2 border-primary/10" />
 

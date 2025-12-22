@@ -1,19 +1,47 @@
-import { Link } from "wouter";
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
 import Logo from "/icons/logo.webp";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [location] = useLocation();
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
+
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
     };
-    window.addEventListener("scroll", handleScroll);
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Handle escape key to close mobile menu
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+
+    if (menuOpen) {
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden"; // Prevent scrolling when menu is open
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
+    };
+  }, [menuOpen]);
 
   const navItems = [
     { label: "HOME", href: "/" },
@@ -22,6 +50,8 @@ export default function Navbar() {
     { label: "CONTACT", href: "/contact" },
   ];
 
+  const isActive = (path: string) => location === path;
+
   return (
     <>
       {/* NAVBAR */}
@@ -29,20 +59,28 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 transition-all duration-500 ${
-          scrolled
-            ? "bg-background/80 backdrop-blur-lg border-b border-white/5"
-            : "mix-blend-difference"
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 py-4 transition-all duration-500 ${
+          scrolled || menuOpen
+            ? "bg-background/90 backdrop-blur-md border-b border-white/10"
+            : "bg-transparent"
         }`}
+        aria-label="Main navigation"
       >
         {/* LOGO */}
         <Link href="/">
           <motion.span
-            className="flex items-center gap-2 text-xl font-bold font-heading tracking-tighter text-white cursor-pointer"
+            className="flex items-center gap-2 text-lg sm:text-xl font-bold font-heading tracking-tighter text-white cursor-pointer select-none"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Home"
           >
-            <img src={Logo} alt="Logo" className="w-12 h-10" />
+            <img
+              src={Logo}
+              alt="Dushyant Pal Logo"
+              className="w-10 h-8 sm:w-12 sm:h-10"
+              width={48}
+              height={40}
+            />
             DUSHYANT PAL<span className="text-primary">.</span>
           </motion.span>
         </Link>
@@ -50,75 +88,90 @@ export default function Navbar() {
         {/* DESKTOP MENU */}
         <div className="hidden md:flex gap-1">
           {navItems.map((item, index) => (
-            <motion.a
-              key={item.label}
-              href={item.href}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index }}
-              className="relative px-4 py-2 text-sm font-medium tracking-widest text-white group"
-            >
-              <span className="relative z-10">{item.label}</span>
-
+            <Link key={item.label} href={item.href}>
               <motion.span
-                className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"
-                initial={{ scale: 0.9 }}
-                whileHover={{ scale: 1 }}
-              />
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index }}
+                className="relative px-4 py-2 text-sm font-medium tracking-widest text-white group block cursor-pointer"
+                aria-current={isActive(item.href) ? "page" : undefined}
+              >
+                <span className="relative z-10 transition-opacity duration-300">
+                  {item.label}
+                </span>
 
-              <span className="absolute inset-0 opacity-0 group-hover:opacity-100 text-black flex items-center justify-center text-sm font-medium tracking-widest transition-opacity z-20">
-                {item.label}
-              </span>
-            </motion.a>
+                {/* Active indicator */}
+                {isActive(item.href) && (
+                  <motion.span
+                    layoutId="activeIndicator"
+                    className="absolute bottom-1 left-4 right-4 h-0.5 bg-primary"
+                  />
+                )}
+
+                {/* Hover effect */}
+                <motion.span
+                  className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
+                  initial={{ scale: 0.9 }}
+                  whileHover={{ scale: 1 }}
+                  layoutId="hoverBg"
+                />
+              </motion.span>
+            </Link>
           ))}
         </div>
 
         {/* DESKTOP CTA */}
-        <motion.a
-          href="/contact"
-          className="hidden md:block relative overflow-hidden group"
+        <motion.div
+          className="hidden md:block"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span className="relative z-10 block px-6 py-2 text-sm font-bold border border-white/20 text-white group-hover:text-black transition-colors duration-300 hover:bg-primary rounded-xl">
-            LET&apos;S TALK
-          </span>
-          <motion.span
-            className="absolute inset-0 bg-primary"
-            initial={{ x: "-100%" }}
-            whileHover={{ x: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          />
-        </motion.a>
+          <Link href="/contact">
+            <span className="relative overflow-hidden group block">
+              <span className="relative z-10 block px-6 py-2 text-sm font-bold border border-white/20 text-white group-hover:text-black transition-colors duration-300 bg-black/20 group-hover:bg-primary rounded-xl">
+                LET&apos;S TALK
+              </span>
+              <motion.span
+                className="absolute inset-0 bg-primary rounded-xl"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </span>
+          </Link>
+        </motion.div>
 
         {/* MOBILE HAMBURGER */}
         <button
-          className="md:hidden text-white z-50"
+          className="md:hidden text-white z-50 p-2 -mr-2"
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <motion.div
             animate={menuOpen ? "open" : "closed"}
             className="w-6 h-5 relative"
           >
             <motion.span
-              className="absolute h-0.5 w-full bg-white top-0"
+              className="absolute h-0.5 w-full bg-white top-0 rounded-full"
               variants={{
                 closed: { rotate: 0, y: 0 },
-                open: { rotate: 45, y: 10, background: "red" },
+                open: { rotate: 45, y: 10 },
               }}
             />
             <motion.span
-              className="absolute h-0.5 w-full bg-white top-2"
+              className="absolute h-0.5 w-full bg-white top-2 rounded-full"
               variants={{
                 closed: { opacity: 1 },
                 open: { opacity: 0 },
               }}
             />
             <motion.span
-              className="absolute h-0.5 w-full bg-white top-4"
+              className="absolute h-0.5 w-full bg-white top-4 rounded-full"
               variants={{
                 closed: { rotate: 0, y: 0 },
-                open: { rotate: -45, y: -6, background: "red" },
+                open: { rotate: -45, y: -6 },
               }}
             />
           </motion.div>
@@ -126,27 +179,59 @@ export default function Navbar() {
       </motion.nav>
 
       {/* MOBILE MENU OVERLAY */}
-      <motion.div
-        initial={false}
-        animate={menuOpen ? "open" : "closed"}
-        variants={{
-          open: { opacity: 1, y: 0 },
-          closed: { opacity: 0, y: -20, pointerEvents: "none" },
-        }}
-        transition={{ duration: 0.3 }}
-        className="fixed inset-0 bg-transparent backdrop-blur-lg flex flex-col items-center justify-center gap-8 md:hidden z-40"
-      >
-        {navItems.map((item) => (
-          <Link key={item.label} href={item.href}>
-            <span
-              onClick={() => setMenuOpen(false)}
-              className="text-2xl font-bold tracking-widest text-white cursor-pointer"
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-background/95 backdrop-blur-sm flex flex-col items-center justify-center gap-8 md:hidden z-40 pt-20"
+            onClick={() => setMenuOpen(false)}
+          >
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link href={item.href}>
+                  <span
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setMenuOpen(false);
+                    }}
+                    className="text-3xl font-bold tracking-widest text-white cursor-pointer block py-2 px-4 hover:text-primary transition-colors duration-300"
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                  >
+                    {item.label}
+                  </span>
+                </Link>
+              </motion.div>
+            ))}
+
+            {/* Mobile CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navItems.length * 0.1 }}
+              className="mt-8"
+              onClick={(e) => e.stopPropagation()}
             >
-              {item.label}
-            </span>
-          </Link>
-        ))}
-      </motion.div>
+              <Link href="/contact">
+                <span
+                  onClick={() => setMenuOpen(false)}
+                  className="px-8 py-3 text-lg font-bold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 rounded-xl inline-block"
+                >
+                  LET&apos;S TALK
+                </span>
+              </Link>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

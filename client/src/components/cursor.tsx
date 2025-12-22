@@ -18,7 +18,12 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.tagName === "A" || target.tagName === "BUTTON" || target.closest("a") || target.closest("button")) {
+      if (
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        target.closest("a") ||
+        target.closest("button")
+      ) {
         setIsHovering(true);
       } else {
         setIsHovering(false);
@@ -38,7 +43,7 @@ export default function CustomCursor() {
     <>
       {/* Main cursor dot */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 pointer-events-none z-9999 mix-blend-difference "
         style={{
           x: cursorX,
           y: cursorY,
@@ -58,7 +63,7 @@ export default function CustomCursor() {
 
       {/* Cursor ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998] hidden md:block"
+        className="fixed top-0 left-0 pointer-events-none z-9998 "
         style={{
           x: cursorX,
           y: cursorY,

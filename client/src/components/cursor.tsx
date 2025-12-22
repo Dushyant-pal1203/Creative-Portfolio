@@ -43,7 +43,7 @@ export default function CustomCursor() {
     <>
       {/* Main cursor dot */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-9999 mix-blend-difference "
+        className="fixed top-0 left-0 pointer-events-none z-9999 mix-blend-difference hidden md:block"
         style={{
           x: cursorX,
           y: cursorY,
@@ -63,7 +63,7 @@ export default function CustomCursor() {
 
       {/* Cursor ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-9998 "
+        className="fixed top-0 left-0 pointer-events-none z-9998 hidden md:block"
         style={{
           x: cursorX,
           y: cursorY,

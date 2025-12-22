@@ -88,58 +88,46 @@ export default function Navbar() {
         {/* DESKTOP MENU */}
         <div className="hidden md:flex gap-1">
           {navItems.map((item, index) => (
-            <Link key={item.label} href={item.href}>
+            <motion.a
+              key={item.label}
+              href={item.href}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index }}
+              className="relative px-4 py-2 text-sm font-medium tracking-widest text-white group"
+            >
+              <span className="relative z-10">{item.label}</span>
+
               <motion.span
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index }}
-                className="relative px-4 py-2 text-sm font-medium tracking-widest text-white group block cursor-pointer"
-                aria-current={isActive(item.href) ? "page" : undefined}
-              >
-                <span className="relative z-10 transition-opacity duration-300">
-                  {item.label}
-                </span>
+                className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"
+                initial={{ scale: 0.9 }}
+                whileHover={{ scale: 1 }}
+              />
 
-                {/* Active indicator */}
-                {isActive(item.href) && (
-                  <motion.span
-                    layoutId="activeIndicator"
-                    className="absolute bottom-1 left-4 right-4 h-0.5 bg-primary"
-                  />
-                )}
-
-                {/* Hover effect */}
-                <motion.span
-                  className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
-                  initial={{ scale: 0.9 }}
-                  whileHover={{ scale: 1 }}
-                  layoutId="hoverBg"
-                />
-              </motion.span>
-            </Link>
+              <span className="absolute inset-0 opacity-0 group-hover:opacity-100 text-black flex items-center justify-center text-sm font-medium tracking-widest transition-opacity z-20">
+                {item.label}
+              </span>
+            </motion.a>
           ))}
         </div>
 
         {/* DESKTOP CTA */}
-        <motion.div
-          className="hidden md:block"
+        <motion.a
+          href="/contact"
+          className="hidden md:block relative overflow-hidden group"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link href="/contact">
-            <span className="relative overflow-hidden group block">
-              <span className="relative z-10 block px-6 py-2 text-sm font-bold border border-white/20 text-white group-hover:text-black transition-colors duration-300 bg-black/20 group-hover:bg-primary rounded-xl">
-                LET&apos;S TALK
-              </span>
-              <motion.span
-                className="absolute inset-0 bg-primary rounded-xl"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              />
-            </span>
-          </Link>
-        </motion.div>
+          <span className="relative z-10 block px-6 py-2 text-sm font-bold border border-white/20 text-white group-hover:text-black transition-colors duration-300 hover:bg-primary rounded-xl">
+            LET&apos;S TALK
+          </span>
+          <motion.span
+            className="absolute inset-0 bg-primary"
+            initial={{ x: "-100%" }}
+            whileHover={{ x: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          />
+        </motion.a>
 
         {/* MOBILE HAMBURGER */}
         <button

@@ -11,6 +11,7 @@ import Home from "@/pages/home";
 import Work from "@/components/projects";
 import About from "@/components/about";
 import Contact from "@/components/contact";
+import Projects from "@/pages/project";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/work" component={Work} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
+      <Route path="/projects" component={Projects} />
       <Route component={NotFound} />
     </Switch>
   );

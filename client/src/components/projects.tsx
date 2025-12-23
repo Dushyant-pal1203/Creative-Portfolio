@@ -270,7 +270,7 @@ export default function Projects() {
           className="flex justify-center mt-16"
         >
           <motion.a
-            href="/"
+            href="/projects"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-3 px-8 py-4 border border-white/20 text-white hover:border-primary hover:text-primary transition-colors group"

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -14,29 +13,34 @@ export default function ContactForm() {
     message: "",
   });
 
-  const submitContactMutation = useMutation({
-    mutationFn: async (data: InsertContact) => {
-      const response = await fetch("/api/contact", {
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isPending, setIsPending] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsPending(true);
+    setIsError(false);
+
+    try {
+      const res = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || "Failed to submit");
-      }
+      if (!res.ok) throw new Error("Failed to send");
 
-      return response.json();
-    },
-    onSuccess: () => {
       setFormData({ name: "", email: "", message: "" });
-    },
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    submitContactMutation.mutate(formData);
+      setIsSuccess(true);
+      setTimeout(() => setIsSuccess(false), 5000);
+    } catch (error) {
+      setIsError(true);
+      setErrorMessage("Failed to send message. Please try again.");
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -52,7 +56,7 @@ export default function ContactForm() {
         Send a Message
       </h3>
 
-      {submitContactMutation.isSuccess && (
+      {isSuccess && (
         <div
           className="mb-6 p-4 bg-primary/10 border border-primary flex items-center gap-3"
           data-testid="success-message"
@@ -64,17 +68,13 @@ export default function ContactForm() {
         </div>
       )}
 
-      {submitContactMutation.isError && (
+      {isError && (
         <div
           className="mb-6 p-4 bg-destructive/10 border border-destructive flex items-center gap-3"
           data-testid="error-message"
         >
           <AlertCircle className="w-5 h-5 text-destructive" />
-          <p className="text-sm text-destructive">
-            {submitContactMutation.error instanceof Error
-              ? submitContactMutation.error.message
-              : "Something went wrong. Please try again."}
-          </p>
+          <p className="text-sm text-destructive">{errorMessage}</p>
         </div>
       )}
 
@@ -93,7 +93,7 @@ export default function ContactForm() {
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="bg-background border-border focus:border-primary text-white"
             required
-            disabled={submitContactMutation.isPending}
+            disabled={isPending}
           />
         </div>
 
@@ -114,7 +114,7 @@ export default function ContactForm() {
             }
             className="bg-background border-border focus:border-primary text-white"
             required
-            disabled={submitContactMutation.isPending}
+            disabled={isPending}
           />
         </div>
 
@@ -134,17 +134,17 @@ export default function ContactForm() {
             }
             className="bg-background border-border focus:border-primary text-white min-h-[150px] resize-none"
             required
-            disabled={submitContactMutation.isPending}
+            disabled={isPending}
           />
         </div>
 
         <Button
           type="submit"
           data-testid="button-submit"
-          disabled={submitContactMutation.isPending}
+          disabled={isPending}
           className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold py-6 text-base transition-all duration-300 hover:scale-[1.02]"
         >
-          {submitContactMutation.isPending ? (
+          {isPending ? (
             "SENDING..."
           ) : (
             <>

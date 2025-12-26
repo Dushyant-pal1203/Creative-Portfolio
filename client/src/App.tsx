@@ -4,7 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/navbar";
-// import CustomCursor from "@/components/cursor";
+import CustomCursor from "@/components/cursor";
 import Footer from "@/components/footer";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
@@ -28,10 +28,10 @@ function Router() {
 
 function App() {
   return (
-    <div>
+    <div className="cursor-none md:cursor-none">
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          {/* <CustomCursor /> */}
+          <CustomCursor />
           <Navbar />
           <Toaster />
           <Router />

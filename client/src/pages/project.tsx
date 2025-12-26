@@ -27,7 +27,7 @@ const projects = [
     title: "INVENTORY SYSTEM",
     category: "Inventory & Stock Management",
     description:
-      "Real-time inventory management system with automated stock tracking, low-stock alerts, and multi-warehouse support. Features intuitive dashboard, role-based access control, and optimized API architecture.",
+      "Real-time inventory management system enabling automated stock tracking, low-stock alerts, and multi-warehouse control. Provides an intuitive dashboard, role-based access, and optimized APIs to improve operational efficiency, accuracy, and visibility across inventory workflows while supporting scalability, security, and seamless integration with modern enterprise systems.",
     technologies: ["React", "Node.js", "PostgreSQL", "WebGL", "FHIR"],
     year: "2025",
     color: "#FF6B35",
@@ -35,7 +35,7 @@ const projects = [
     stats: { patients: "200K+", accuracy: "99.7%", hospitals: "50+" },
     liveUrl: "https://inventory-system-h2u5.onrender.com/",
     codeUrl: "https://github.com/Dushyant-pal1203/Inventory_system.git",
-    featured: true,
+    featured: false,
     highlight: "Most Efficient",
   },
   {
@@ -43,7 +43,7 @@ const projects = [
     title: "GOLDBAZZAR",
     category: "Digital Gold Investment",
     description:
-      "Modern digital investment platform for buying/selling 24K gold & silver with real-time tracking. Features instant transactions, live market charts, automated portfolio insights, and bank-grade security.",
+      "A modern digital investment platform for buying and selling 24K gold and silver with real-time price tracking. Includes instant transactions, live market charts, automated portfolio insights, and bank-grade security, delivering a seamless, transparent, and reliable investment experience for users across web platforms.",
     technologies: ["Next.js", "Three.js", "GSAP", "Sanity CMS"],
     year: "2025",
     color: "#9D4EDD",
@@ -59,7 +59,7 @@ const projects = [
     title: "MOTONEXA",
     category: "Automotive Parts Platform",
     description:
-      "High-performance automotive parts sourcing with real-time procurement insights. Features live inventory tracking, intelligent supplier matching, and instant pricing via WebSocket streams.",
+      "High-performance automotive parts sourcing platform offering real-time procurement insights. Enables live inventory tracking, intelligent supplier matching, and instant pricing updates through WebSocket streams, helping businesses optimize sourcing decisions, reduce delays, and improve supply chain efficiency with fast, reliable, data-driven workflows.",
     technologies: ["React", "TypeScript", "D3.js", "WebSocket", "Redis"],
     year: "2024",
     color: "#00FF88",
@@ -76,7 +76,7 @@ const projects = [
     title: "HASHSTUDIOZ",
     category: "AI & Cloud Solutions",
     description:
-      "Multidisciplinary tech studio crafting intelligent digital products powered by cloud, AI, blockchain, and IoT. Delivering seamless, scalable software experiences for global brands.",
+      "A multidisciplinary technology studio delivering intelligent digital products using cloud computing, artificial intelligence, blockchain, and IoT solutions. Focuses on building scalable, secure, and innovative software experiences for global brands while transforming complex ideas into impactful digital platforms.",
     technologies: ["Next.js", "Python", "Stable Diffusion", "Ethereum"],
     year: "2024",
     color: "#00D4FF",
@@ -84,14 +84,14 @@ const projects = [
     stats: { artworks: "100K+", artists: "5K+", volume: "$2M+" },
     liveUrl: "https://www.hashstudioz.com/",
     codeUrl: "/",
-    featured: true,
+    featured: false,
   },
   {
     id: "05",
     title: "ALLEN ONE",
     category: "AI Education Platform",
     description:
-      "Comprehensive educational platform with AI-powered learning paths, real-time progress tracking, and interactive content delivery for personalized student experiences.",
+      "An AI-powered education platform offering personalized learning paths, interactive content delivery, and real-time progress tracking. Designed to enhance student engagement and outcomes through data-driven insights, adaptive learning experiences, and scalable infrastructure supporting diverse courses and large user bases.",
     technologies: ["Next.js", "Python", "TensorFlow", "GraphQL"],
     year: "2024",
     color: "#3C99F6",
@@ -103,57 +103,10 @@ const projects = [
   },
   {
     id: "06",
-    title: "MCS PUBLISHER",
-    category: "Digital Publishing Suite",
-    description:
-      "Advanced digital publishing platform with automated formatting, multi-channel distribution, and analytics dashboard for content performance tracking.",
-    technologies: ["React", "Node.js", "MongoDB", "AWS"],
-    year: "2024",
-    color: "#FFB347",
-    gradient: "from-amber-500 via-orange-500 to-yellow-600",
-    stats: { publications: "5K+", authors: "500+", reach: "1M+" },
-    liveUrl: "#",
-    codeUrl: "/",
-    featured: false,
-  },
-  {
-    id: "07",
-    title: "ODG (Online Delhi Guider)",
-    category: "Educational Platform & University Guide",
-    description:
-      "A comprehensive online platform for BCA students in Delhi, providing detailed guidance on colleges, courses, curriculum, and career opportunities. Features include college comparisons, admission procedures, syllabus breakdowns, and placement statistics to help students make informed decisions.",
-    technologies: ["React", "Node.js", "MongoDB", "Mapbox", "Chart.js"],
-    year: "2023",
-    color: "#4F46E5",
-    gradient: "from-indigo-500 via-purple-500 to-blue-600",
-    stats: { students: "10K+", colleges: "50+", accuracy: "98%" },
-    liveUrl: "#",
-    codeUrl: "#",
-    featured: false,
-    // highlight: "Educational Resource",
-  },
-  {
-    id: "08",
-    title: "Online Book Stock and Print Management",
-    category: "Inventory & Publishing System",
-    description:
-      "A sophisticated book inventory and print-on-demand management system for publishers and bookstores. Features real-time stock tracking, automated reordering, print queue management, and sales analytics. Includes barcode scanning, multi-warehouse support, and vendor management modules.",
-    technologies: ["React", "Express.js", "MySQL", "Redis", "Printer API"],
-    year: "2023",
-    color: "#059669",
-    gradient: "from-emerald-500 via-green-500 to-teal-600",
-    stats: { books: "50K+", orders: "100K+", efficiency: "85%" },
-    liveUrl: "#",
-    codeUrl: "#",
-    featured: false,
-    // highlight: "Inventory Optimized",
-  },
-  {
-    id: "09",
     title: "Auction strategy for a new IPL franchise",
     category: "Sports Analytics & Strategy Platform",
     description:
-      "A data-driven auction strategy platform for IPL franchises using machine learning and predictive analytics. Analyzes player performance, team requirements, budget constraints, and auction dynamics to recommend optimal bidding strategies. Features include real-time simulations, player valuation models, and team composition optimization.",
+      "A data-driven analytics platform designed to optimize IPL auction strategies. Uses machine learning to analyze player performance, budgets, and team requirements, providing predictive insights, real-time simulations, valuation models, and optimized bidding recommendations for building competitive and balanced franchise teams.",
     technologies: ["Python", "Pandas", "Scikit-learn", "Dash", "PostgreSQL"],
     year: "2023",
     color: "#DC2626",
@@ -161,16 +114,15 @@ const projects = [
     stats: { players: "500+", accuracy: "92%", simulations: "10K+" },
     liveUrl: "#",
     codeUrl: "#",
-    featured: false,
+    featured: true,
     highlight: "Data-Driven Strategy",
   },
   {
-    id: "10",
-    title:
-      "Machine Learning model using various Classification Models to predict rainfall",
+    id: "07",
+    title: "ML model to predict rainfall",
     category: "Climate Analytics & Prediction System",
     description:
-      "A sophisticated ML platform that predicts rainfall patterns using multiple classification algorithms. Analyzes historical weather data, atmospheric conditions, and geographical factors to generate accurate rainfall predictions. Features comparative model analysis, feature importance visualization, and real-time prediction dashboard.",
+      "An advanced machine learning platform for rainfall prediction using historical weather data and atmospheric parameters. Provides accurate forecasts through multiple models, feature analysis, and visual dashboards, enabling better climate insights, comparison of algorithms, and real-time prediction capabilities for research and planning.",
     technologies: ["Python", "TensorFlow", "XGBoost", "Matplotlib", "Flask"],
     year: "2023",
     color: "#0EA5E9",
@@ -178,15 +130,15 @@ const projects = [
     stats: { accuracy: "94%", datasets: "100K+", models: "8+" },
     liveUrl: "#",
     codeUrl: "#",
-    featured: false,
+    featured: true,
     highlight: "Climate Intelligence",
   },
   {
-    id: "11",
+    id: "08",
     title: "Linear regression model using Python",
     category: "Statistical Analysis & Prediction Tool",
     description:
-      "A comprehensive linear regression analysis tool for predictive modeling and statistical inference. Features include data preprocessing, model fitting, residual analysis, and prediction visualization. Supports multiple regression techniques with detailed statistical reporting and interactive result interpretation.",
+      "A statistical analysis tool built using linear regression for predictive modeling. Includes data preprocessing, model training, residual evaluation, and visualization. Supports detailed statistical reporting and interactive interpretation, enabling accurate predictions, deeper insights, and effective analysis of relationships between variables.",
     technologies: ["Python", "NumPy", "SciPy", "Seaborn", "Jupyter"],
     year: "2023",
     color: "#8B5CF6",
@@ -195,7 +147,81 @@ const projects = [
     liveUrl: "#",
     codeUrl: "#",
     featured: false,
-    // highlight: "Statistical Excellence",
+    highlight: "Statistical Excellence",
+  },
+  {
+    id: "09",
+    title: "MCS PUBLISHER",
+    category: "Digital Publishing Suite",
+    description:
+      "Advanced digital publishing platform supporting automated content formatting, multi-channel distribution, and performance analytics. Enables publishers to manage publications efficiently, track reader engagement, and optimize content reach through centralized dashboards, scalable architecture, and streamlined workflows for modern digital publishing operations.",
+    technologies: ["React", "Node.js", "MongoDB", "AWS"],
+    year: "2023",
+    color: "#FFB347",
+    gradient: "from-amber-500 via-orange-500 to-yellow-600",
+    stats: { publications: "5K+", authors: "500+", reach: "1M+" },
+    liveUrl: "#",
+    codeUrl: "/",
+    featured: true,
+  },
+  {
+    id: "10",
+    title: "Online Book Stock and Print Management",
+    category: "Inventory & Publishing System",
+    description:
+      "A comprehensive book inventory and print management system for publishers and bookstores. Supports real-time stock tracking, automated reordering, print queue handling, barcode scanning, sales analytics, and multi-warehouse operations to improve efficiency, reduce errors, and streamline publishing and distribution workflows.",
+    technologies: ["React", "Express.js", "MySQL", "Redis", "Printer API"],
+    year: "2021",
+    color: "#059669",
+    gradient: "from-emerald-500 via-green-500 to-teal-600",
+    stats: { books: "50K+", orders: "100K+", efficiency: "85%" },
+    liveUrl:
+      "https://drive.google.com/file/d/1p7p3EnNZ9vj5-SfW3b1wioN7Wam_h9DT/view?usp=drivesdk",
+    codeUrl: "#",
+    featured: false,
+    // highlight: "Inventory Optimized",
+  },
+  {
+    id: "11",
+    title: "Online Delhi Guider",
+    category: "Educational Platform & University Guide",
+    description:
+      "Online Delhi Guider is a web-based platform designed to help tourists, newcomers, and residents explore Delhi more easily and efficiently. The project acts as a virtual travel guide, offering structured information about historical places, local attractions, transportation options, food hubs, markets, accommodations, and cultural events across the city.",
+    technologies: ["React", "Node.js", "MongoDB", "Mapbox", "Chart.js"],
+    year: "2019",
+    color: "#4F46E5",
+    gradient: "from-indigo-500 via-purple-500 to-blue-600",
+    stats: { students: "10K+", colleges: "50+", accuracy: "98%" },
+    liveUrl:
+      "https://drive.google.com/file/d/1p9hZ2d6Pw2YLDBvvbsamEu3udeL5aTAb/view?usp=drivesdk",
+    codeUrl: "#",
+    featured: false,
+    highlight: "Travelling Resource",
+  },
+  {
+    id: "12",
+    title: "Huawei EMUI-9 Theme Project",
+    category: "UI/UX Design & Android Customization",
+    description:
+      "A custom Huawei EMUI-9 / EMUI-9.1 theme designed to enhance the visual experience of Huawei and Honor smartphones. The theme customizes system icons, wallpapers, fonts, lock-screen layout, quick settings panel, and core UI elements to deliver a clean, modern, and visually consistent interface while maintaining system performance and usability.",
+    technologies: [
+      "Photoshop",
+      "Illustrator",
+      "Huawei Theme Studio",
+      "HWT Packaging",
+    ],
+    year: "2019",
+    color: "#FFB347",
+    gradient: "from-amber-500 via-orange-500 to-yellow-600",
+    stats: {
+      downloads: "5K+",
+      devices_supported: "EMUI 9 / 9.1",
+      rating: "4.8★",
+    },
+    liveUrl: "https://sharetheme.page.link/aXjqwoLnYxa2QEnbA",
+    codeUrl: "#",
+    featured: true,
+    highlight: "Custom System Theme for EMUI",
   },
 ];
 
@@ -608,8 +634,20 @@ const Project = () => {
             </h1>
 
             <p className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
-              Where <span className="text-white font-semibold">innovation</span>{" "}
-              meets <span className="text-white font-semibold">execution</span>{" "}
+              Where{" "}
+              <motion.span
+                className="text-primary inline-block"
+                whileHover={{ scale: 1.1, rotate: -2 }}
+              >
+                innovation
+              </motion.span>{" "}
+              meets{" "}
+              <motion.span
+                className="text-primary inline-block"
+                whileHover={{ scale: 1.1, rotate: 2 }}
+              >
+                execution
+              </motion.span>{" "}
               — showcasing digital excellence through cutting-edge projects
             </p>
           </motion.div>

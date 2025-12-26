@@ -11,10 +11,16 @@ import heroBg from "/images/background.webp";
 import CarHero from "@/components/CarHero";
 
 const socials = [
-  { name: "TWITTER", url: "#" },
-  { name: "GITHUB", url: "#" },
-  { name: "LINKEDIN", url: "#" },
-  { name: "INSTAGRAM", url: "#" },
+  { name: "TWITTER", url: "https://x.com/Dushyant1203" },
+  { name: "GITHUB", url: "https://github.com/Dushyant-pal1203" },
+  {
+    name: "LINKEDIN",
+    url: "https://www.linkedin.com/in/dushyant-pal-393548262?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  },
+  {
+    name: "INSTAGRAM",
+    url: "https://www.instagram.com/pal32742?igsh=aHJlMGp0ZzBtcmZx",
+  },
 ];
 
 export default function Contact() {
